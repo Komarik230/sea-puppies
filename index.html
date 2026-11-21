@@ -1,47 +1,143 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="theme-color" content="#111323" />
-<meta name="description" content="SEA PUPPIES — a tiny pixel-art story about the secret lives of sea lions. An interactive digital pet for the Pudding Cup." />
-<title>SEA PUPPIES // a tiny ocean story</title>
-<link rel="icon" href="favicon.svg" type="image/svg+xml" />
-<link rel="stylesheet" href="style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SEA PUPPIES — a pocket pager for one sea lion pup</title>
+<meta name="description" content="Take care of a sea lion pup on a 2000s-style pocket pager. Eight needs, eight true behaviors, one goodbye.">
+<meta name="theme-color" content="#141838">
+<meta property="og:title" content="SEA PUPPIES">
+<meta property="og:description" content="Take care of a sea lion pup on a pocket pager. Eight needs, eight true behaviors, one goodbye.">
+<meta property="og:image" content="img/og.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/favicon.png" type="image/png">
+<link rel="preload" href="fonts/pixelify-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-<div class="ocean-noise" aria-hidden="true"></div>
-<main id="app">
- <div class="ambient" aria-hidden="true"><span class="ambient-star">✳</span><span class="ambient-star">✦</span><span class="ambient-star">✳</span><span class="ambient-star">✦</span></div>
- <div class="device-wrap" id="device-wrap">
-  <div class="hanger" aria-hidden="true"><div class="hanger-link"></div><div class="hanger-loop"></div></div>
-  <section class="pet" id="pet" aria-label="Interactive sea lion digital pet">
-   <div class="pet-shell">
-    <div class="shell-highlight"></div>
-    <div class="pet-top"><div class="pet-brand">SEA<span>★</span>PUPPIES</div><div class="pet-subbrand">OCEAN FRIENDS SYSTEM™</div></div>
-    <div class="screen-rim">
-      <div class="screen" id="screen">
-       <div class="status-icons" aria-hidden="true"><span id="status-01">✳</span><span id="status-02">◉</span><span id="status-03">♨</span><span id="status-04">♫</span><span id="status-05">♥</span></div>
-       <div class="screen-meta"><span id="screen-chapter">00 / 08</span><span id="screen-status">OFFLINE</span></div>
-       <canvas id="pixelCanvas" width="192" height="170" role="img" aria-label="Pixel art sea lion on a tiny ocean shore"></canvas>
-       <div class="pixel-tooltip" id="pixel-tooltip" aria-live="polite"></div>
-       <div class="screen-bottom"><span id="screen-action">PRESS POWER TO BEGIN</span><span id="screen-life">♡♡♡</span></div>
-       <div id="screen-off" class="screen-off" aria-hidden="true"><div class="off-mark">✳</div><span>SEA PUPPIES</span><small>BATTERY READY</small></div>
+<body class="is-off">
+
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="corner" role="group" aria-label="Settings">
+  <button id="langBtn" class="corner-btn" type="button" aria-label="Switch language"><span data-lang="en">EN</span>/<span data-lang="ru">RU</span></button>
+  <button id="soundBtn" class="corner-btn" type="button" aria-pressed="true"><span class="snd-on">♪ on</span><span class="snd-off">♪ off</span></button>
+</div>
+
+<main id="stage">
+  <h1 class="sr-only">SEA PUPPIES: take care of a sea lion pup</h1>
+  <div id="device">
+    <div id="hanger" aria-hidden="true"><div class="chain"></div></div>
+    <canvas id="shell" width="112" height="160" aria-hidden="true"></canvas>
+    <div id="lcdWrap">
+      <canvas id="lcd" width="128" height="96" role="img" aria-label="Pager screen"></canvas>
+      <div id="textbox" hidden>
+        <div id="tbBody"></div>
+        <div id="tbMore" aria-hidden="true">▼</div>
       </div>
     </div>
-    <div class="shell-bottom"><div class="hardware-button" id="hardware-back"><button id="btn-back" class="round-button" type="button" aria-label="Previous" disabled><span>◀</span></button><small>A</small></div><div class="hardware-button"><button id="btn-action" class="round-button" type="button" aria-label="Switch on"><span id="action-symbol">●</span></button><small>B</small></div><div class="hardware-button"><button id="btn-next" class="round-button" type="button" aria-label="Next" disabled><span>▶</span></button><small>C</small></div></div>
-    <div class="shell-screw screw-left" aria-hidden="true"></div><div class="shell-screw screw-right" aria-hidden="true"></div>
-   </div>
-  </section>
-  <div class="power-hint" id="power-hint"><span class="hint-arrow">↖</span><span data-i18n="powerHint">PRESS THE MIDDLE BUTTON</span></div>
- </div>
- <div class="story" id="story" aria-live="polite">
-  <div class="story-header"><span class="eyebrow" id="eyebrow">FIELD NOTES / 000</span><div class="story-tools"><button id="lang" type="button" aria-label="Switch language">EN / RU</button><button id="sound" type="button" aria-label="Toggle sound">SOUND OFF ♫</button></div></div>
-  <div class="story-inner"><div class="chapter-tag" id="chapter-tag">HELLO, STRANGER</div><h1 id="story-title">A tiny ocean.<br>A very loud friend.</h1><p id="story-copy">An interactive little animal story. Press the middle button to turn your ocean pet on.</p><div id="fact" class="fact" hidden></div><div id="puppy-check" class="puppy-check" hidden></div></div>
-  <div class="story-footer"><span id="step-hint">THREE BUTTONS. ONE LITTLE WORLD.</span><span id="progress">░░░░░░░░</span></div>
- </div>
- <div class="bottom-caption">© SEA PUPPIES <span>✳</span> A NON-COMMERCIAL PIXEL OCEAN EXPERIMENT</div>
+    <button class="hw" id="btnPower" type="button" aria-label="Power"></button>
+    <button class="hw" id="btnA" type="button" aria-label="A: choose"></button>
+    <button class="hw" id="btnB" type="button" aria-label="B: OK"></button>
+    <button class="hw" id="btnC" type="button" aria-label="C: back"></button>
+    <div id="hint" hidden><span class="hint-arrow"></span><span class="hint-label"></span></div>
+  </div>
+  <p id="keys" class="keys" aria-hidden="true"><span data-i18n="ui.keys"></span></p>
 </main>
-<script src="app.js"></script>
+
+<div id="sr" class="sr-only" aria-live="polite"></div>
+
+<!-- ============================================ CREDITS: a homepage from 2004 -->
+<section id="credits" hidden>
+  <div class="home">
+    <header class="home-head">
+      <canvas id="logoCanvas" width="140" height="30" aria-hidden="true"></canvas>
+      <h2 data-i18n="cr.title">sea puppies — the homepage</h2>
+      <div class="marquee" aria-hidden="true"><span data-i18n="cr.marquee"></span></div>
+    </header>
+
+    <div class="win" id="winAbout">
+      <div class="win-bar"><span>about_us.htm</span><span class="win-x" aria-hidden="true">×</span></div>
+      <div class="win-body about">
+        <div class="avatars">
+          <figure><canvas id="avLiza" width="40" height="40" aria-hidden="true"></canvas><figcaption data-i18n="cr.liza">Liza</figcaption></figure>
+          <figure><canvas id="avUlyana" width="40" height="40" aria-hidden="true"></canvas><figcaption data-i18n="cr.ulyana">Ulyana</figcaption></figure>
+        </div>
+        <div>
+          <p class="hey" data-i18n="cr.hey"></p>
+          <p data-i18n="cr.made"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="win" id="winHelp">
+      <div class="win-bar"><span>help_real_sea_lions.txt</span><span class="win-x" aria-hidden="true">×</span></div>
+      <div class="win-body">
+        <ol class="help">
+          <li><b data-i18n="cr.h1t"></b> <span data-i18n="cr.h1"></span></li>
+          <li><b data-i18n="cr.h2t"></b> <span data-i18n="cr.h2"></span> <a href="https://www.fisheries.noaa.gov/report" target="_blank" rel="noopener" data-i18n="cr.h2a"></a></li>
+          <li><b data-i18n="cr.h3t"></b> <span data-i18n="cr.h3"></span> <a href="https://www.marinemammalcenter.org/" target="_blank" rel="noopener">The Marine Mammal Center</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="win" id="winBonus">
+      <div class="win-bar"><span>bonus.exe</span><span class="win-x" aria-hidden="true">×</span></div>
+      <div class="win-body bonus-launch">
+        <p data-i18n="cr.bonus"></p>
+        <button id="bonusOpen" class="btn98" type="button" data-i18n="cr.bonusBtn"></button>
+      </div>
+    </div>
+
+    <div class="win" id="winSources">
+      <div class="win-bar"><span>sources.txt</span><span class="win-x" aria-hidden="true">×</span></div>
+      <div class="win-body">
+        <p class="small" data-i18n="cr.srcIntro"></p>
+        <div id="sourcesList"></div>
+      </div>
+    </div>
+
+    <footer class="home-foot">
+      <div class="badges" aria-hidden="true">
+        <span class="badge b1">SEA<br>PUPPIES</span>
+        <span class="badge b2">LOSE THE<br>LOOP</span>
+        <span class="badge b3">EN · RU</span>
+        <span class="badge b4">best viewed<br>at 2 a.m.</span>
+        <span class="badge b5">made with<br>pixels ♥</span>
+      </div>
+      <p>
+        <button id="again" class="btn98" type="button" data-i18n="cr.again"></button>
+        <a class="btn98" href="https://github.com/Komarik230/sea-puppies" target="_blank" rel="noopener" data-i18n="cr.code"></a>
+      </p>
+      <p class="small" data-i18n="cr.foot"></p>
+    </footer>
+  </div>
+</section>
+
+<!-- ============================================ BONUS: ronan_beat.exe -->
+<div id="bonus" class="overlay" hidden role="dialog" aria-modal="true" aria-labelledby="bonusTitle">
+  <div class="win win-bonus">
+    <div class="win-bar"><span id="bonusTitle">ronan_beat.exe</span><button class="win-x" id="bonusClose" type="button" aria-label="Close">×</button></div>
+    <div class="win-body">
+      <canvas id="beatCanvas" width="128" height="72" aria-hidden="true"></canvas>
+      <p id="beatText" aria-live="polite"></p>
+      <div class="beat-row">
+        <button id="beatStart" class="btn98" type="button" data-i18n="bonus.start"></button>
+        <button id="beatTap" class="btn98 tap" type="button" data-i18n="bonus.tap" disabled></button>
+      </div>
+      <p class="small" data-i18n="bonus.note"></p>
+    </div>
+  </div>
+</div>
+
+<noscript><p class="noscript">SEA PUPPIES needs JavaScript to run its pager. Sorry!</p></noscript>
+
+<script src="js/sprites.gen.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/story.js"></script>
+<script src="js/credits.js"></script>
 </body>
 </html>
