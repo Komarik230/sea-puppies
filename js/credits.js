@@ -29,7 +29,7 @@
       ['Raum-Suryan, Jemison & Pitcher (2009), Marine Pollution Bulletin — Entanglement of Steller sea lions in marine debris', 'https://sitkawhalefest.org/wordpress/wp-content/uploads/2025/07/Raum-Suryan-et-al.-2009-ENTANGLEMENTS-SSL.pdf'],
       ['Alaska Department of Fish and Game — “Lose the loop” poster', 'https://newsrelease.adfg.alaska.gov/static/research/programs/marinemammals/pdfs/entanglement_poster_oct_2009.pdf'],
       ['Raum-Suryan & Suryan (2022), Oceans — Steller sea lion entanglement on the central Oregon coast', 'https://doi.org/10.3390/oceans3030022'],
-      ['Oregon State University — Study suggests changes could reduce sea lion entanglements', 'https://blogs.oregonstate.edu/breakingwaves/?p=1129'],
+      ['Oregon State University news — Most sea lion entanglements could be prevented (drowning, infection, starvation)', 'https://today.prod.acquia.cws.oregonstate.edu/node/55905'],
       ['NOAA Fisheries — Report an entangled marine mammal', 'https://www.fisheries.noaa.gov/national/marine-life-distress/report-entangled-marine-mammal']] },
     { h: { en: 'Heat & cold', ru: 'Терморегуляция' }, items: [
       ['NOAA Fisheries — Steller sea lion: distress, waving, or thermoregulation?', 'https://www.fisheries.noaa.gov/feature-story/steller-sea-lion-distress-waving-or-itthermoregulation'],
