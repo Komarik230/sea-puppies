@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#111323" />
+<meta name="description" content="SEA PUPPIES — a tiny pixel-art story about the secret lives of sea lions. An interactive digital pet for the Pudding Cup." />
+<title>SEA PUPPIES // a tiny ocean story</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="ocean-noise" aria-hidden="true"></div>
+<main id="app">
+ <div class="ambient" aria-hidden="true"><span class="ambient-star">✳</span><span class="ambient-star">✦</span><span class="ambient-star">✳</span><span class="ambient-star">✦</span></div>
+ <div class="device-wrap" id="device-wrap">
+  <div class="hanger" aria-hidden="true"><div class="hanger-link"></div><div class="hanger-loop"></div></div>
+  <section class="pet" id="pet" aria-label="Interactive sea lion digital pet">
+   <div class="pet-shell">
+    <div class="shell-highlight"></div>
+    <div class="pet-top"><div class="pet-brand">SEA<span>★</span>PUPPIES</div><div class="pet-subbrand">OCEAN FRIENDS SYSTEM™</div></div>
+    <div class="screen-rim">
+      <div class="screen" id="screen">
+       <div class="status-icons" aria-hidden="true"><span id="status-01">✳</span><span id="status-02">◉</span><span id="status-03">♨</span><span id="status-04">♫</span><span id="status-05">♥</span></div>
+       <div class="screen-meta"><span id="screen-chapter">00 / 08</span><span id="screen-status">OFFLINE</span></div>
+       <canvas id="pixelCanvas" width="192" height="170" role="img" aria-label="Pixel art sea lion on a tiny ocean shore"></canvas>
+       <div class="pixel-tooltip" id="pixel-tooltip" aria-live="polite"></div>
+       <div class="screen-bottom"><span id="screen-action">PRESS POWER TO BEGIN</span><span id="screen-life">♡♡♡</span></div>
+       <div id="screen-off" class="screen-off" aria-hidden="true"><div class="off-mark">✳</div><span>SEA PUPPIES</span><small>BATTERY READY</small></div>
+      </div>
+    </div>
+    <div class="shell-bottom"><div class="hardware-button" id="hardware-back"><button id="btn-back" class="round-button" type="button" aria-label="Previous" disabled><span>◀</span></button><small>A</small></div><div class="hardware-button"><button id="btn-action" class="round-button" type="button" aria-label="Switch on"><span id="action-symbol">●</span></button><small>B</small></div><div class="hardware-button"><button id="btn-next" class="round-button" type="button" aria-label="Next" disabled><span>▶</span></button><small>C</small></div></div>
+    <div class="shell-screw screw-left" aria-hidden="true"></div><div class="shell-screw screw-right" aria-hidden="true"></div>
+   </div>
+  </section>
+  <div class="power-hint" id="power-hint"><span class="hint-arrow">↖</span><span data-i18n="powerHint">PRESS THE MIDDLE BUTTON</span></div>
+ </div>
+ <div class="story" id="story" aria-live="polite">
+  <div class="story-header"><span class="eyebrow" id="eyebrow">FIELD NOTES / 000</span><div class="story-tools"><button id="lang" type="button" aria-label="Switch language">EN / RU</button><button id="sound" type="button" aria-label="Toggle sound">SOUND OFF ♫</button></div></div>
+  <div class="story-inner"><div class="chapter-tag" id="chapter-tag">HELLO, STRANGER</div><h1 id="story-title">A tiny ocean.<br>A very loud friend.</h1><p id="story-copy">An interactive little animal story. Press the middle button to turn your ocean pet on.</p><div id="fact" class="fact" hidden></div><div id="puppy-check" class="puppy-check" hidden></div></div>
+  <div class="story-footer"><span id="step-hint">THREE BUTTONS. ONE LITTLE WORLD.</span><span id="progress">░░░░░░░░</span></div>
+ </div>
+ <div class="bottom-caption">© SEA PUPPIES <span>✳</span> A NON-COMMERCIAL PIXEL OCEAN EXPERIMENT</div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
