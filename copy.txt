@@ -1,0 +1,379 @@
+# æ-æ-æ-tchi — every word the site shows lives in this file.
+#
+# HOW TO EDIT
+# - A line like [food.chart] starts a block. Keep block names as they are.
+# - Inside a block, a line that starts with a field name and a colon starts a field:
+#     title:   the heading in the side panel
+#     text:    the main text
+#     finding: "What the data says" (the main conclusion of a chart)
+#     method:  "How we know" (methodology)
+#     source:  one source per line, written as   Name of the source | https://link
+#     alt:     what the pixel screen shows, read aloud by screen readers
+#   A field can run over several lines: it continues until the next field or block.
+# - An empty line starts a new paragraph. A line starting with "- " is a bullet.
+# - **bold**, *italic* and [link text](https://...) work inside any text.
+# - {name} is replaced with the sea lion's name.
+# - Lines starting with # are notes like this one and never appear on the site.
+# - The [lcd] block holds labels drawn on the pixel screen. The pixel font only has
+#   CAPITAL LATIN LETTERS, digits and . , % - + / : ~ < > ? ! — keep labels as short
+#   as they are now, or they will not fit.
+# - After editing, reload the page (it reads this file every time it starts).
+
+
+# ───────────────────────────── page ─────────────────────────────
+
+[meta]
+title: æ-æ-æ-tchi
+description: A pocket tamagotchi that runs on real data about the California sea lion.
+
+[off]
+title: A pet that runs on data
+text:
+A pocket pet that runs on real data about one loud animal: the California sea lion.
+
+Press ● to switch it on.
+credit: A visual essay for The Pudding Cup 2026 by Liza & Ulyana.
+
+[ui]
+keys.off: ● switch on
+keys.intro: ◀ back   ● next   ▶ next
+keys.menu: ◀ ▶ choose a need   ● open it
+keys.step: ◀ back   ● next   ▶ next
+keys.last: ◀ back   ● fill the meter
+keys.finale: ◀ back   ● next
+keys.end: ◀ back
+btn.left: Back
+btn.middle: Select
+btn.right: Next
+btn.power: Power
+btn.sound.on: Sound: on
+btn.sound.off: Sound: off
+btn.again: Start over
+label.finding: What the data says
+label.method: How we know
+label.sources: Sources
+label.all.sources: Every source we used
+label.done: done
+meters.title: {name}'s meters
+name.label: Name your sea lion
+name.default: Zalo
+need.food: Food
+need.sleep: Sleep
+need.play: Play
+need.talk: Talk
+need.care: Care
+need.heal: Heal
+need.heat: Heat
+need.tags: Tags
+
+
+# ───────────────────────────── opening ─────────────────────────────
+
+[intro.count]
+title: 47,422 sightings
+text:
+Before you meet one sea lion, meet all of them on record.
+
+GBIF, the open global database of where living things have been found, holds **47,422 records** of the California sea lion: museum specimens, survey counts and, above all, phone photos. Two out of three records come from people sharing pictures on iNaturalist.
+finding: People have logged more California sea lion records since 2020 (25,960) than in all the years before it (20,457).
+method: All GBIF occurrence records of *Zalophus californianus* (GBIF taxon 2433458) as of 25 November 2026, counted by the year of the sighting. 1,005 records have no year and are not in the chart. The last bar covers 2020 to November 2026 and is still growing. One animal can be recorded many times, so this counts sightings, not sea lions.
+source: GBIF occurrence search: Zalophus californianus | https://www.gbif.org/occurrence/search?taxon_key=2433458
+alt: A big number, 47,422 records, above a bar chart of records per decade. The bar for the 2020s is by far the tallest.
+
+[intro.map]
+title: Where people saw them
+text:
+Each lit pixel is a patch of sea or coast about 48 km across with at least one record.
+
+California sea lions live in the eastern North Pacific, from southeast Alaska to the Pacific coast of central Mexico. They breed from the Channel Islands off southern California to central Mexico (the orange line).
+finding: The map shows where people look as much as where sea lions live. One pixel on the San Diego coast holds about 4,450 records, one in San Francisco about 3,370. San Miguel and San Nicolas, the two islands where about 90% of California's pups are born, have only a few hundred each.
+method: GBIF map tiles for *Zalophus californianus* (42,428 records with coordinates and no flagged location problems fall inside this map), regridded so that one pixel is about 0.43° of latitude. The tiles update less often than the live count. Coastline: Natural Earth. We drew NOAA's description of the breeding range as a line from 34°N to 23.5°N; range and breeding range come from NOAA Fisheries, the pup share from NOAA's Channel Islands counts.
+source: GBIF: Zalophus californianus | https://www.gbif.org/species/2433458
+source: NOAA Fisheries: California sea lion | https://www.fisheries.noaa.gov/species/california-sea-lion
+source: NOAA technical memorandum on Channel Islands sea lion counts (Lowry et al.) | https://repository.library.noaa.gov/view/noaa/14198
+source: Natural Earth 1:50m land | https://www.naturalearthdata.com/
+alt: A map of the west coast of North America from Alaska to Mexico. Records crowd along the California coast. An orange line marks the breeding range.
+
+[intro.meet]
+title: One of them is yours
+text: Out of all those records, one young California sea lion is now in your care.
+after: You will look after it like a tamagotchi, and study it like a scientist: every need comes with real data.
+alt: The map zooms into one pixel, and a young sea lion appears on a beach and blinks.
+
+[intro.rules]
+title: Eight needs, any order
+text:
+Like a real tamagotchi, {name} has eight meters: food, sleep, play, talk, care, heal, heat and tags.
+
+Fill them in any order. Each need starts with a tiny old-school game (no playing needed, just watch) and then shows the science behind it.
+
+Use the three buttons on the toy or your keyboard: ◀ and ▶ move between needs, ● opens one.
+alt: {name} sits on the screen while the eight icons around it light up one by one.
+
+
+# ───────────────────────────── menu ─────────────────────────────
+
+[menu]
+title: {name}'s needs
+text: Pick a need with ◀ ▶ and open it with ●. You can also click a meter.
+alt: {name} waits on the beach, thinking about the selected need.
+
+[menu.food]
+text: **Food.** What is on a sea lion's menu? Game: Snake.
+
+[menu.sleep]
+text: **Sleep.** How does a sea lion sleep? Game: Tetris.
+
+[menu.play]
+text: **Play.** Can a sea lion keep a beat? Game: Pong.
+
+[menu.talk]
+text: **Talk.** How does a mother find her pup? Game: Egg catch.
+
+[menu.care]
+text: **Care.** How long is mom away? Game: Pac-Man.
+
+[menu.heal]
+text: **Heal.** Why do sea lions wash up sick? Game: Space Invaders.
+
+[menu.heat]
+text: **Heat.** Hot sand, cold water. Game: Mario run.
+
+[menu.tags]
+text: **Tags.** How many pups make it? Game: Frogger.
+
+
+# ───────────────────────────── food ─────────────────────────────
+
+[food.game]
+title: Food: Snake
+text:
+{name} winds through the water like the snake in the old phone game, and grows with every bite.
+
+California sea lions eat squid, anchovies, mackerel, rockfish and sardines, found where cold, nutrient-rich water wells up along the coast.
+source: NOAA Fisheries: California sea lion | https://www.fisheries.noaa.gov/species/california-sea-lion
+alt: Snake game. A sea lion head pulls a growing tail around the screen, eating seven kinds of fish and squid.
+
+[food.chart]
+title: 142 species, 7 regulars
+text: Scientists learn what sea lions eat by sifting their scat for fish ear bones and squid beaks.
+finding: Of 142 prey species found in sea lion scat, only seven are eaten commonly: market squid, northern anchovy, shortbelly rockfish, jack mackerel, Pacific mackerel, Pacific sardine and Pacific hake. The favorite follows the ocean: anchovy in the 1980s, market squid in the 1990s and 2000s.
+method: Scat collected at three of the Channel Islands from 1981 to 2015. One square stands for one prey species; the seven filled squares are the common ones.
+source: Lowry, Nehasil & Moore 2022, Marine Ecology Progress Series 692:1–21 | https://doi.org/10.3354/meps14096
+alt: A grid of 142 squares with 7 filled in, labelled squid, anchovy, rockfish, jack mackerel, Pacific mackerel, sardine and hake.
+
+
+# ───────────────────────────── sleep ─────────────────────────────
+
+[sleep.game]
+title: Sleep: Tetris
+text:
+Sleepy sea lions stack up like Tetris blocks. On shore they haul out on beaches and rocks, and along the West Coast also on marina docks, jetties and buoys.
+
+At sea they "raft": a rafting sea lion holds its flippers above the water, motionless, to rest and to regulate its body temperature.
+source: NOAA Fisheries: California sea lion | https://www.fisheries.noaa.gov/species/california-sea-lion
+alt: Tetris game. Sleeping sea lions drop onto a floating dock and pile up while z's float away.
+
+[sleep.chart]
+title: The missing chart
+text: We wanted to show how many hours a California sea lion sleeps. That number does not exist.
+finding: We found no published study that records a California sea lion's natural sleep with brain sensors. Such studies exist for four other eared seals, among them Steller and southern sea lions.
+method: We checked the 2019 review "Sleep in Aquatic Mammals" by Oleg Lyamin and Jerome Siegel and searched for newer studies. Brain recordings of stranded California sea lions do exist, but they were made under sedation to look for seizures, not to measure sleep. We chose not to fill the gap with numbers from other species.
+source: Lyamin & Siegel 2019, "Sleep in Aquatic Mammals" (book chapter) | https://teams.semel.ucla.edu/sites/default/files/publications/19_aquatic_mammals_proof_lyamin_siegel.pdf
+source: Williams et al. 2023, Pinniped electroencephalography, Frontiers in Veterinary Science | https://doi.org/10.3389/fvets.2023.1040125
+alt: Four small eared seals, each with a check mark: sleep recorded. A California sea lion with a question mark: no data.
+
+
+# ───────────────────────────── play ─────────────────────────────
+
+[play.game]
+title: Play: Pong
+text:
+A ball bouncing on a steady beat, and a head that meets it every time. This game belongs to Ronan, a real California sea lion.
+
+Ronan was born in the wild in 2008. After stranding three times from malnutrition, she was declared unable to return to the ocean. Since 2010 she has lived at UC Santa Cruz, where she learned to bob her head in time to a beat, and then to music.
+source: University of California: Ronan returns for an encore (2025) | https://www.universityofcalifornia.edu/news/jammin-ronan-rhythmically-trained-sea-lion-returns-encore-and-performs-well-humans
+alt: Pong game. A sea lion bobs her head and hits a ball against a paddle on every beat.
+
+[play.chart]
+title: A tenth of a blink
+finding: Ronan's timing varies by about 15 milliseconds from one beat to the next. A blink of a human eye takes about 150. In a 2025 study her beat-keeping was as good as or better than that of 10 student volunteers.
+method: Ronan bobbed her head to a percussive beat; 10 UC Santa Cruz undergraduates moved an arm up and down to a metronome. Over 12 years she took part in about 2,000 rhythm sessions of 10 to 15 seconds each, by her own choice: she is never punished or denied food for skipping one.
+source: Cook, Hood, Rouse & Reichmuth 2025, Scientific Reports | https://doi.org/10.1038/s41598-025-95279-1
+source: UC Santa Cruz news (2025) | https://news.ucsc.edu/2025/05/ronan-sea-lion-beats-humans/
+alt: Two bars on a millisecond scale: Ronan's beat-to-beat variation, 15 ms, and a human eye blink, 150 ms.
+
+
+# ───────────────────────────── talk ─────────────────────────────
+
+[talk.game]
+title: Talk: Egg catch
+text:
+In the old handheld game, a wolf catches eggs rolling down four ramps. Here a mother sea lion catches calls, and only one of the voices belongs to her pup.
+
+Real mothers do this every few days. Back from sea, a female finds her pup among hundreds of others by its voice, then smells it as a final check.
+source: NOAA Fisheries: California sea lion | https://www.fisheries.noaa.gov/species/california-sea-lion
+alt: Egg-catch game. Calls roll down four ramps; the mother turns to catch only her own pup's call.
+
+[talk.chart]
+title: One voice in 27,146
+finding: Each July scientists count the pups on San Miguel Island. Between 1997 and 2016 the count ranged from 9,428 to 27,146. Somewhere in that crowd, every returning mother picks out one voice.
+method: Live pups counted on San Miguel Island, the westernmost Channel Island, between July 20 and 30 of each year, as reported by California’s Office of Environmental Health Hazard Assessment. One dot stands for 25 pups (rounded).
+source: OEHHA, Indicators of Climate Change in California: sea lion pup demography | https://oehha.ca.gov/media/epic/downloads/ibs_cslpd2018.pdf
+source: NOAA Fisheries: California sea lion | https://www.fisheries.noaa.gov/species/california-sea-lion
+alt: Two blocks of dots, one dot per 25 pups: the lowest count, 9,428, and the highest, 27,146.
+
+
+# ───────────────────────────── care ─────────────────────────────
+
+[care.game]
+title: Care: Pac-Man
+text:
+Mom heads out to sea and eats her way through it like Pac-Man. Her pup waits on the beach.
+
+A mother nurses her pup for 1 to 2 days, then spends 2 to 5 days feeding at sea. While she is away, the pup does not eat. Weaning takes almost a year.
+source: NOAA Fisheries: California sea lion | https://www.fisheries.noaa.gov/species/california-sea-lion
+alt: Pac-Man game. A mother sea lion eats a trail of fish through a kelp maze while her pup waits on the shore.
+
+[care.chart]
+title: Mostly away
+finding: Mothers spend most of their time at sea. In winter and spring their feeding trips lasted 3.3 to 4.6 days on average, and their nursing visits ashore only 1.2 to 1.4 days. In most study years they were at sea more than 70% of the time.
+method: Researchers followed mothers and pups on San Miguel Island during the non-breeding seasons of 1991–1994. Each bar spans the range of the average values the study reports for different years and seasons.
+source: Melin et al. 2000, Marine Mammal Science: attendance patterns at San Miguel Island | https://pubs.usgs.gov/publication/70023210
+alt: Two range bars on a scale of days: at sea feeding, 3.3 to 4.6 days; ashore nursing, 1.2 to 1.4 days.
+
+
+# ───────────────────────────── heal ─────────────────────────────
+
+[heal.game]
+title: Heal: Space Invaders
+text:
+Waves of trouble march toward the coast, and the rescue team fires back.
+
+Scientists can sometimes trace sea lion strandings to disease, harmful algal blooms or boat strikes, but the cause often remains unknown. Getting caught in fishing gear is one of the main threats.
+source: NOAA Fisheries: California sea lion | https://www.fisheries.noaa.gov/species/california-sea-lion
+alt: Space Invaders game. Rows of fishing-line loops, toxic algae and germs move down; a rescue cannon shoots them one by one.
+
+[heal.chart]
+title: Hunger comes first
+finding: Of 3,707 California sea lions found stranded alive on the central California coast in 1991–2000, the most common cause was malnutrition (32%), then leptospirosis, a bacterial disease (27%), trauma (18%), domoic acid poisoning from toxic algae (9%) and cancer (3%). Malnutrition strandings peaked in the El Niño years 1992, 1993 and 1998.
+method: Researchers reviewed the records of 3,707 sea lions that stranded alive along the central California coast in those ten years. The "other" bar, 11%, is what is left after the five causes the study reports; that is our calculation.
+source: Greig, Gulland & Kreuder 2005, Aquatic Mammals 31(1):11–22 | https://doi.org/10.1578/AM.31.1.2005.11
+alt: Bar chart of stranding causes: malnutrition 32%, leptospirosis 27%, trauma 18%, domoic acid 9%, cancer 3%, other 11%.
+
+
+# ───────────────────────────── heat ─────────────────────────────
+
+[heat.game]
+title: Heat: Mario run
+text:
+{name} dashes across a hot beach like Mario, dives in and floats with a flipper in the air.
+
+That pose is called rafting: sea lions hold their flippers above the water, motionless, to rest and to regulate their body temperature.
+source: NOAA Fisheries: California sea lion | https://www.fisheries.noaa.gov/species/california-sea-lion
+alt: Platform game. A sea lion hops across sunny sand, bumps a block that drops water, jumps into the sea and rafts with a flipper raised.
+
+[heat.chart]
+title: Cold costs the young more
+finding: Adult females rest comfortably in water down to about 6.4 °C, some 4 °C colder than the sea off California usually gets. Juveniles showed no comfort zone between 5 and 20 °C: their resting metabolism increased as the water approached 12 °C, so cold water costs them extra energy.
+method: Researchers measured the oxygen use of 5 adult females (82–107 kg) and 4 juveniles (26–37 kg) resting in water at 0–20 °C (adults) and 5–20 °C (juveniles). The comfort zone is the "thermal neutral zone": the temperatures at which the body does not spend extra energy to stay warm. The coast marker (about 10 °C) is 6.4 °C plus the study's "about 4 °C".
+source: Liwanag et al. 2009, Journal of Experimental Biology 212:3977–3984 | https://doi.org/10.1242/jeb.033282
+alt: A water-temperature scale from 0 to 20 °C. The adults' comfort zone starts at 6.4 °C; the juveniles have none in the tested range.
+
+
+# ───────────────────────────── tags ─────────────────────────────
+
+[tags.game]
+title: Tags: Frogger
+text:
+Each lane is one year of life. Can a marked pup make it across?
+
+Since 1987, NOAA scientists have put permanent marks on pups on San Miguel Island and looked for them again, year after year.
+source: DeLong et al. 2017, Marine Mammal Science 33(4):1097–1125 | https://doi.org/10.1111/mms.12427
+alt: Frogger game. A marked pup hops up through five lanes of moving boats and nets, one lane for each year of age; the first lane is the busiest.
+
+[tags.chart]
+title: The first year is the hardest
+finding: On average, 60% of female pups and 57% of male pups survived their first year. Yearlings did better (76% of both sexes), and survival peaked at age five: 95% of females and 93% of males lived to see the next year.
+method: Mark-recapture analysis of pups branded on San Miguel Island from 1987 to 2014 and resighted from 1990 to 2015. Bars show the average annual survival at each age.
+source: DeLong et al. 2017, Marine Mammal Science 33(4):1097–1125 | https://doi.org/10.1111/mms.12427
+alt: Paired bars for females and males: pups 60% and 57%, yearlings 76% and 76%, five-year-olds 95% and 93%.
+
+
+# ───────────────────────────── finale ─────────────────────────────
+
+[finale.release]
+title: Release day
+text:
+All eight meters are full.
+
+Thank you for the good work, Professor. Time to release {name}, so it can bring back more data next time.
+alt: {name}, wearing an orange flipper tag, swims away. A new dot lights up on the map.
+
+[finale.end]
+title: See you in the data
+text:
+Real sea lions don't need a tamagotchi. They need space.
+
+- Watch them from at least 50 yards (about 46 m) away, for 30 minutes or less.
+- If you find a stranded, sick or hurt sea lion, don't touch it. Report it.
+credit: Made by Liza & Ulyana for The Pudding Cup 2026. [Code on GitHub](https://github.com/Komarik230/sea-puppies).
+source: NOAA: report a stranded or injured marine animal | https://www.fisheries.noaa.gov/report
+source: The Marine Mammal Center | https://www.marinemammalcenter.org/
+source: NOAA Fisheries viewing guidelines (California sea lion page) | https://www.fisheries.noaa.gov/species/california-sea-lion
+alt: Far out at sea, {name} rafts with one flipper raised.
+
+
+# ───────────────────────────── pixel-screen labels ─────────────────────────────
+
+[lcd]
+count.records: RECORDS
+count.axis: 10K,20K
+count.decades: <70,70S,80S,90S,00S,10S,20S
+count.top.10s: 7.5K
+count.top.20s: 26K
+map.legend1: RECORDS
+map.legend2: PER PIXEL
+map.low: 1-9
+map.high: 10+
+map.breed1: BREEDING
+map.breed2: RANGE
+map.scale: 1 PX ~ 48 KM
+map.can: CAN
+map.usa: USA
+map.mex: MEX
+food.common: 7 COMMON
+food.other: 135 OTHER
+food.total: 142 PREY SPECIES
+food.names: SQUID,ANCHOVY,ROCKFISH,JACK MACK.,PAC. MACK.,SARDINE,HAKE
+sleep.studied1: 4 OTHER EARED
+sleep.studied2: SEALS: STUDIED
+sleep.csl1: CALIFORNIA
+sleep.csl2: SEA LION
+sleep.nodata: NO DATA
+play.ronan: RONAN
+play.blink: EYE BLINK
+play.unit: MS
+talk.low: 9,428
+talk.high: 27,146
+talk.lowlabel: LOWEST YEAR
+talk.highlabel: HIGHEST YEAR
+talk.unit: 1 DOT = 25 PUPS
+care.sea1: AT SEA
+care.sea2: FEEDING
+care.shore1: ASHORE
+care.shore2: NURSING
+care.unit: DAYS
+heal.n: N = 3,707
+heal.names: MALNUTRITION,LEPTOSPIROSIS,TRAUMA,DOMOIC ACID,CANCER,OTHER
+heat.adults: ADULTS
+heat.young: YOUNG
+heat.comfort: COMFORT ZONE
+heat.none: NONE FOUND
+heat.coast: COAST ~10
+heat.unit: WATER C
+tags.ages: PUP,AGE 1,AGE 5
+tags.f: FEMALE
+tags.m: MALE
+tags.unit: % SURVIVING THE YEAR
+game.day: DAY

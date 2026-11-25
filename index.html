@@ -1,143 +1,68 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>SEA PUPPIES — a pocket pager for one sea lion pup</title>
-<meta name="description" content="Take care of a sea lion pup on a 2000s-style pocket pager. Eight needs, eight true behaviors, one goodbye.">
-<meta name="theme-color" content="#141838">
-<meta property="og:title" content="SEA PUPPIES">
-<meta property="og:description" content="Take care of a sea lion pup on a pocket pager. Eight needs, eight true behaviors, one goodbye.">
-<meta property="og:image" content="img/og.png">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="img/favicon.png" type="image/png">
-<link rel="preload" href="fonts/pixelify-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>æ-æ-æ-tchi</title>
+  <meta name="description" content="A pocket tamagotchi that runs on real data about the California sea lion.">
+  <meta property="og:title" content="æ-æ-æ-tchi">
+  <meta property="og:description" content="A pocket tamagotchi that runs on real data about the California sea lion.">
+  <meta property="og:image" content="img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="img/favicon.png">
+  <link rel="preload" href="fonts/pixelify-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="is-off">
+  <main id="app">
+    <section id="device" aria-label="Pixel tamagotchi">
+      <canvas id="shell" width="128" height="160" aria-hidden="true"></canvas>
+      <div id="lcdWrap"><canvas id="lcd" width="128" height="96" role="img" aria-label=""></canvas></div>
+      <button class="hw" id="btnPower" type="button" aria-label="Power"></button>
+      <button class="hw" id="btnL" type="button" aria-label="Back"></button>
+      <button class="hw" id="btnM" type="button" aria-label="Select"></button>
+      <button class="hw" id="btnR" type="button" aria-label="Next"></button>
+    </section>
 
-<canvas id="sky" aria-hidden="true"></canvas>
-<div class="grain" aria-hidden="true"></div>
-
-<div class="corner" role="group" aria-label="Settings">
-  <button id="langBtn" class="corner-btn" type="button" aria-label="Switch language"><span data-lang="en">EN</span>/<span data-lang="ru">RU</span></button>
-  <button id="soundBtn" class="corner-btn" type="button" aria-pressed="true"><span class="snd-on">♪ on</span><span class="snd-off">♪ off</span></button>
-</div>
-
-<main id="stage">
-  <h1 class="sr-only">SEA PUPPIES: take care of a sea lion pup</h1>
-  <div id="device">
-    <div id="hanger" aria-hidden="true"><div class="chain"></div></div>
-    <canvas id="shell" width="112" height="160" aria-hidden="true"></canvas>
-    <div id="lcdWrap">
-      <canvas id="lcd" width="128" height="96" role="img" aria-label="Pager screen"></canvas>
-      <div id="textbox" hidden>
-        <div id="tbBody"></div>
-        <div id="tbMore" aria-hidden="true">▼</div>
+    <aside id="panel">
+      <div id="pHead">
+        <p id="mast">æ-æ-æ-tchi</p>
+        <button id="soundBtn" class="btn-text" type="button"></button>
       </div>
-    </div>
-    <button class="hw" id="btnPower" type="button" aria-label="Power"></button>
-    <button class="hw" id="btnA" type="button" aria-label="A: choose"></button>
-    <button class="hw" id="btnB" type="button" aria-label="B: OK"></button>
-    <button class="hw" id="btnC" type="button" aria-label="C: back"></button>
-    <div id="hint" hidden><span class="hint-arrow"></span><span class="hint-label"></span></div>
-  </div>
-  <p id="keys" class="keys" aria-hidden="true"><span data-i18n="ui.keys"></span></p>
-</main>
-
-<div id="sr" class="sr-only" aria-live="polite"></div>
-
-<!-- ============================================ CREDITS: a homepage from 2004 -->
-<section id="credits" hidden>
-  <div class="home">
-    <header class="home-head">
-      <canvas id="logoCanvas" width="140" height="30" aria-hidden="true"></canvas>
-      <h2 data-i18n="cr.title">sea puppies — the homepage</h2>
-      <div class="marquee" aria-hidden="true"><span data-i18n="cr.marquee"></span></div>
-    </header>
-
-    <div class="win" id="winAbout">
-      <div class="win-bar"><span>about_us.htm</span><span class="win-x" aria-hidden="true">×</span></div>
-      <div class="win-body about">
-        <div class="avatars">
-          <figure><canvas id="avLiza" width="40" height="40" aria-hidden="true"></canvas><figcaption data-i18n="cr.liza">Liza</figcaption></figure>
-          <figure><canvas id="avUlyana" width="40" height="40" aria-hidden="true"></canvas><figcaption data-i18n="cr.ulyana">Ulyana</figcaption></figure>
+      <div id="pMain" aria-live="polite">
+        <h1 id="pTitle"></h1>
+        <div id="pText"></div>
+        <div id="pName" hidden>
+          <label id="nameLabel" for="petName"></label>
+          <input id="petName" type="text" maxlength="12" autocomplete="off" spellcheck="false">
+          <div id="pAfter"></div>
         </div>
-        <div>
-          <p class="hey" data-i18n="cr.hey"></p>
-          <p data-i18n="cr.made"></p>
+        <div id="pNotes"></div>
+        <button id="againBtn" class="btn-text" type="button" hidden></button>
+      </div>
+      <div id="pMeters" hidden>
+        <h2 id="metersTitle"></h2>
+        <div id="meterList"></div>
+      </div>
+      <div id="pKeys">
+        <div class="keys">
+          <button id="kL" class="key" type="button"><span aria-hidden="true">◀</span></button>
+          <button id="kM" class="key" type="button"><span aria-hidden="true">●</span></button>
+          <button id="kR" class="key" type="button"><span aria-hidden="true">▶</span></button>
         </div>
+        <p id="keyHint"></p>
       </div>
-    </div>
+    </aside>
+  </main>
 
-    <div class="win" id="winHelp">
-      <div class="win-bar"><span>help_real_sea_lions.txt</span><span class="win-x" aria-hidden="true">×</span></div>
-      <div class="win-body">
-        <ol class="help">
-          <li><b data-i18n="cr.h1t"></b> <span data-i18n="cr.h1"></span></li>
-          <li><b data-i18n="cr.h2t"></b> <span data-i18n="cr.h2"></span> <a href="https://www.fisheries.noaa.gov/report" target="_blank" rel="noopener" data-i18n="cr.h2a"></a></li>
-          <li><b data-i18n="cr.h3t"></b> <span data-i18n="cr.h3"></span> <a href="https://www.marinemammalcenter.org/" target="_blank" rel="noopener">The Marine Mammal Center</a></li>
-        </ol>
-      </div>
-    </div>
-
-    <div class="win" id="winBonus">
-      <div class="win-bar"><span>bonus.exe</span><span class="win-x" aria-hidden="true">×</span></div>
-      <div class="win-body bonus-launch">
-        <p data-i18n="cr.bonus"></p>
-        <button id="bonusOpen" class="btn98" type="button" data-i18n="cr.bonusBtn"></button>
-      </div>
-    </div>
-
-    <div class="win" id="winSources">
-      <div class="win-bar"><span>sources.txt</span><span class="win-x" aria-hidden="true">×</span></div>
-      <div class="win-body">
-        <p class="small" data-i18n="cr.srcIntro"></p>
-        <div id="sourcesList"></div>
-      </div>
-    </div>
-
-    <footer class="home-foot">
-      <div class="badges" aria-hidden="true">
-        <span class="badge b1">SEA<br>PUPPIES</span>
-        <span class="badge b2">LOSE THE<br>LOOP</span>
-        <span class="badge b3">EN · RU</span>
-        <span class="badge b4">best viewed<br>at 2 a.m.</span>
-        <span class="badge b5">made with<br>pixels ♥</span>
-      </div>
-      <p>
-        <button id="again" class="btn98" type="button" data-i18n="cr.again"></button>
-        <a class="btn98" href="https://github.com/Komarik230/sea-puppies" target="_blank" rel="noopener" data-i18n="cr.code"></a>
-      </p>
-      <p class="small" data-i18n="cr.foot"></p>
-    </footer>
-  </div>
-</section>
-
-<!-- ============================================ BONUS: ronan_beat.exe -->
-<div id="bonus" class="overlay" hidden role="dialog" aria-modal="true" aria-labelledby="bonusTitle">
-  <div class="win win-bonus">
-    <div class="win-bar"><span id="bonusTitle">ronan_beat.exe</span><button class="win-x" id="bonusClose" type="button" aria-label="Close">×</button></div>
-    <div class="win-body">
-      <canvas id="beatCanvas" width="128" height="72" aria-hidden="true"></canvas>
-      <p id="beatText" aria-live="polite"></p>
-      <div class="beat-row">
-        <button id="beatStart" class="btn98" type="button" data-i18n="bonus.start"></button>
-        <button id="beatTap" class="btn98 tap" type="button" data-i18n="bonus.tap" disabled></button>
-      </div>
-      <p class="small" data-i18n="bonus.note"></p>
-    </div>
-  </div>
-</div>
-
-<noscript><p class="noscript">SEA PUPPIES needs JavaScript to run its pager. Sorry!</p></noscript>
-
-<script src="js/sprites.gen.js"></script>
-<script src="js/i18n.js"></script>
-<script src="js/audio.js"></script>
-<script src="js/engine.js"></script>
-<script src="js/story.js"></script>
-<script src="js/credits.js"></script>
+  <script src="js/sprites.gen.js"></script>
+  <script src="js/copy.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/games.js"></script>
+  <script src="js/story.js"></script>
 </body>
 </html>

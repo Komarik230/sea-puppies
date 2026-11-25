@@ -1,80 +1,73 @@
-# SEA PUPPIES
+# æ-æ-æ-tchi
 
-**A pocket pager for one sea lion pup.** Turn it on, take care of eight needs, and find out how much a sea lion really is a "sea puppy". Every need is a true behavior: you watch it, play it, then read one or two sentences about it. The piece ends with a goodbye, a power-off and a homepage from 2004.
-
-Made by Liza & Ulyana for the [Pudding Cup 2026](https://pudding.cool/pudding-cup/). EN / RU.
+A pocket tamagotchi that runs on real data about one animal: the California sea lion (*Zalophus californianus*). Made for [The Pudding Cup 2026](https://pudding.cool/pudding-cup/) by Liza & Ulyana.
 
 **Live:** https://komarik230.github.io/sea-puppies/
 
-## What happens inside
+## How it works
 
-| # | need | what you do | what it shows | puppy check |
-|---|------|-------------|---------------|-------------|
-| 1 | food | send him fishing | small fish go down whole; big prey gets shaken apart at the surface | ✔ |
-| 2 | sleep | dim the lights | a puppy pile on land; his cousin the fur seal sleeps at sea with half its brain | ✔ |
-| 3 | play | throw the ball | he runs off until he is one pixel; play as practice | ✔ |
-| 4 | talk | press B ×3 | bark → roll call (fill the screen with 12,288 sea lions, then find your pup by the *shape* of its voice) → nose to nose | ✔ |
-| 5 | grooming | let him scratch | claws on the three middle toes of the hind flipper | ✔ |
-| 6 | rescue | cut the loop (3 snips) | **data twist:** packing straps 54%, rubber bands 30%, nets only 7% → *Lose the Loop* | ✘ |
-| 7 | heat & cold | sun, then wind | a flipper is a radiator and a solar panel | ✘ |
-| 8 | accessories | pick a hat | real sea lions get tags, not hats — the only orange pixels in the piece | ✔ |
+You switch the toy on and see every California sea lion on record first: 47,422 GBIF records, then a map of where people saw them. One young sea lion becomes yours. It has eight needs, and you can fill them in any order. Each need opens with a tiny old-school game that plays itself, followed by one chart with the science behind it.
 
-Then: puppy score 6/8 (Caniformia, but closest to bears or weasels), the pup swims away, you turn the pager off. Secret level in the credits: `ronan_beat.exe`, a tap-to-the-beat test against Ronan the sea lion (~15 ms).
+| Need | Game | What the chart shows | Source |
+|---|---|---|---|
+| Food | Snake | 142 prey species found in scat, 7 eaten commonly | Lowry, Nehasil & Moore 2022 |
+| Sleep | Tetris | A missing chart: no study has recorded this species' natural sleep | Lyamin & Siegel 2019 |
+| Play | Pong | Ronan's beat-to-beat timing (≈15 ms) vs an eye blink (≈150 ms) | Cook et al. 2025; UC Santa Cruz |
+| Talk | Egg catch | Pups counted on San Miguel Island: 9,428 to 27,146 (1997–2016) | OEHHA; NOAA |
+| Care | Pac-Man | Mothers' trips at sea (3.3–4.6 days) vs nursing visits (1.2–1.4 days) | Melin et al. 2000 |
+| Heal | Space Invaders | Causes of 3,707 live strandings, central California 1991–2000 | Greig, Gulland & Kreuder 2005 |
+| Heat | Mario run | Thermal comfort zone of adults vs juveniles in cold water | Liwanag et al. 2009 |
+| Tags | Frogger | Annual survival by age of pups branded on San Miguel Island | DeLong et al. 2017 |
 
-## Design rules we kept
+Every number is about the California sea lion only. Full citations and links are in `copy.txt` and on the last screen of the site.
 
-- The LCD shows only pictures and numbers. All words live in the dialog box, so the piece can be translated and read by screen readers.
-- One accent colour: **rescue orange** appears only for real-world things (the flipper tag, "cut every plastic loop").
-- Every fact is an action first, a sentence second.
-- Sounds are synthesized pager beeps, never animal recordings pretending to be real.
+## Editing the text
 
-## Run locally
+**All text lives in [`copy.txt`](copy.txt)**: panel texts, findings, methods, sources, button hints and the labels drawn on the pixel screen. The file explains its own format at the top. Edit it, reload the page, done. No build step.
 
-```bash
-python3 -m http.server 8000   # then open http://localhost:8000
+## Run it locally
+
+The page loads `copy.txt` with `fetch`, so it needs a tiny web server (opening `index.html` as a file will not work):
+
+```
+python3 -m http.server 8000
+# then open http://localhost:8000
 ```
 
-No build step, no dependencies. Plain HTML, CSS and JavaScript (classic scripts, so it even opens from `file://`).
+Jump straight to a screen with `?step=`: `?step=intro.map`, `?step=menu`, `?step=heal.chart`, `?step=finale.release`. Add `&done=all` to start with every meter full.
 
-Controls: **A** (or ←) choose · **B** (space / Enter / ↓) OK · **C** (→ / Esc) back · **P** power.
+## Controls
 
-Handy URLs while editing: `?ch=talk` jumps to a chapter (`food sleep play talk care heal thermo decor`), `?end` jumps to the finale, `?credits` opens the homepage, `?fast` speeds everything up.
+Three buttons, like the real toy: **◀** back / previous need, **●** select / next, **▶** next. Keyboard: ← → and Enter (or A, D, S). P is the power button. The buttons under the text do the same.
 
 ## Files
 
 ```
-index.html          page + credits homepage + bonus window
-css/style.css       everything visual outside the canvases
-js/sprites.gen.js   all pixel art as editable text grids ('.' clear · 0 paper · 1 light · 2 mid · 3 ink · o orange)
-js/i18n.js          every sentence, EN + RU
-js/audio.js         WebAudio synth (beeps, barks, calls)
-js/engine.js        the pager: shell drawing, LCD renderer, buttons, dialog box, hints, night-sea background
-js/story.js         the eight chapters, menu, finale
-js/credits.js       homepage, sources list, ronan_beat.exe
-tools/spritelab.py  generates sprites.gen.js from shapes and renders a preview sheet
-fonts/              Pixelify Sans (SIL Open Font License), Latin + Cyrillic
+index.html          page skeleton
+copy.txt            every word on the site
+css/style.css       layout: flat background, toy on the left, notes on the right
+js/copy.js          reads copy.txt
+js/data.js          all numbers used in the charts, plus the map grid
+js/engine.js        LCD drawing, pixel font, the toy's shell, buttons, render loop
+js/charts.js        the opening count and map, the eight charts, the finale
+js/games.js         the eight self-playing mini-games
+js/story.js         the flow: intro → needs in any order → release
+js/audio.js         synthesized beeps (no recordings)
+js/sprites.gen.js   pixel sprites, generated by tools/spritelab.py
+tools/              sprite generator and the map data scripts
 ```
 
-### Redrawing the art
+## Rebuilding the map data
 
-The pixel art is a placeholder drawn in code. To make it yours, either edit the grids in `js/sprites.gen.js` by hand (each character is one LCD pixel), or change the shapes in `tools/spritelab.py` and run:
+1. `python3 tools/gbif_points.py` downloads GBIF's map tiles for taxon 2433458 and writes `gbif_points.json`.
+2. Download Natural Earth's `ne_50m_land.geojson` into the same folder.
+3. `python3 tools/build_map.py` regrids both onto the 128×96 screen and writes `map_lcd.json`; copy its `land` and `rec` arrays into `SP.DATA.map` in `js/data.js`.
 
-```bash
-python3 tools/spritelab.py preview.png js/sprites.gen.js
-```
+The record counts in the opening come from the GBIF occurrence API (`https://api.gbif.org/v1/occurrence/search?taxonKey=2433458&facet=year`), checked on 25 November 2026.
 
-## Sources
+## Design rules we kept
 
-Every fact links to its source on the final homepage (`sources.txt`). Key ones:
-
-- Raum-Suryan, Jemison & Pitcher (2009), *Marine Pollution Bulletin* — what entangles Steller sea lions' necks (packing bands 54%, rubber bands 30%, net 7%, rope 7%, monofilament 2%); "Lose the loop".
-- Raum-Suryan & Suryan (2022), *Oceans* — Oregon: 60% of entangled Steller sea lions were juveniles.
-- Pitcher, Harcourt & Charrier (2010), *PLOS ONE* — Australian sea lion mothers recognize their pup's call by 48 hours.
-- Charrier & Harcourt (2006), *Journal of Mammalogy* — individual vocal signatures (frequency modulation, spectrum).
-- National Park Service — ~80,000 California sea lions breed on San Miguel Island.
-- Lyamin et al. (2018), *Current Biology* — fur seals sleep with one hemisphere at a time in water.
-- Llamazares-Martín & Palagi (2021) — play in otariids.
-- NOAA Fisheries, The Marine Mammal Center, SeaWorld, Smithsonian's National Zoo, Aquarium of the Pacific — behavior, thermoregulation, tags.
-- Cook et al. (2025), *Scientific Reports*; UC Santa Cruz news — Ronan keeps a beat within ~15 ms at 120 bpm.
-
-The voice shapes in the mom game are illustrations of the idea (identity is coded in pitch, rhythm and frequency modulation), not measured calls.
+- The pixel screen shows only the sea lion, the games and the charts; every word sits in the panel on the right.
+- Bars start at zero, axes are labelled, categories are named on the chart itself, and each chart's method and sources sit next to it.
+- One species, verified sources, and an honest gap where data does not exist.
+- Sounds are synthesized; no animal recordings.

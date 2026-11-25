@@ -1,4 +1,4 @@
-/* SEA PUPPIES — every sound is synthesized: pager beeps, not animal recordings. */
+/* æ-æ-æ-tchi — every sound is synthesized: pager beeps, not animal recordings. */
 window.SP = window.SP || {};
 
 SP.audio = (function () {
